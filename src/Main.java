@@ -81,6 +81,20 @@ public class Main {
         }
         return result;
     }
+
+    public static int ex5() {
+        int result = 0;
+        try (Scanner scanner = new Scanner(new File("src/ex5.txt"))) {
+            if (scanner.hasNextInt()) { // to avoid NoSuchElementException
+                int number = scanner.nextInt();
+                System.out.println(number * 100);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " - " + e.getClass().getName());
+        }
+        return result;
+    }
+
     public static long convertToDouble(String number) {
         return Long.parseLong(number.replace(",", ""));
     }
@@ -95,5 +109,7 @@ public class Main {
         System.out.println("Ex. 3: " + ex3());
         // Returns the count of all even numbers before 0 appears
         System.out.println("Ex. 4: " + ex4());
+        // What exception is thrown when I use nextInt() on an empty file?
+        System.out.println("Ex. 5: " + ex5());
     }
 }
